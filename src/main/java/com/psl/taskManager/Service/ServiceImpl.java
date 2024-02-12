@@ -23,10 +23,10 @@ public class ServiceImpl implements Service{
 	@Override
 	public taskDto addTask(Task task) {
 		task.setStartDate(Calendar.getInstance().getTime());
-		task.setStatus(null);
+		task.setStatus("in progress");
 		 taskRepo.save(task);
 		 taskDto dto=new taskDto();
-			dto.setStatus("in progress");
+			dto.setStatus(task.getStatus());
 			dto.setTaskDetails(task.getTaskDetails());
 			dto.setTaskId(task.getTaskId());
 			dto.setTitle(task.getTitle());
