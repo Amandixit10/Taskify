@@ -60,4 +60,9 @@ public class Controller {
 	System.out.println(status+" "+order);
 	return taskService.sortTaskByDate(status,order);
 	}
+	@GetMapping("/getTask/overdue")
+	public List<Task> overTaskList()
+	{
+		return taskService.overdueTask();
+	}
 }

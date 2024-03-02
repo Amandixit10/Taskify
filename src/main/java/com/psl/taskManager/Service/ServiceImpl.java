@@ -90,4 +90,21 @@ public List<taskDto> Converter(List<Task> taskList)
 	return list;	
 }
 
+@Override
+public List<Task> overdueTask() {
+	
+    List<Task> list=taskRepo.getOverdueTaskList(new Date());
+    statusUpdate(list);
+    return list;
+}
+
+@Override
+public void statusUpdate(List<Task> task) {
+	
+	for(Task i:task)
+	{
+		taskRepo.updateTaskStatus(i.getTaskId(),"Overdue");
+	}
+}
+
 }
