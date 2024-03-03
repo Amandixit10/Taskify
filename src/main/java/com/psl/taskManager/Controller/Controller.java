@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.psl.taskManager.Model.Task;
-import com.psl.taskManager.Service.Service;
+import com.psl.taskManager.Service.ServiceInterface;
 import com.psl.taskManager.dto.taskDto;
 
 @RestController
@@ -24,7 +24,7 @@ import com.psl.taskManager.dto.taskDto;
 public class Controller {
 
 	@Autowired
-	private Service taskService;
+	private ServiceInterface taskService;
 	
 	@PostMapping("/addTask")
 	public taskDto addtask(@RequestBody Task task)

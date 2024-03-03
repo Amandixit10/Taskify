@@ -5,7 +5,7 @@ import java.util.List;
 import com.psl.taskManager.Model.Task;
 import com.psl.taskManager.dto.taskDto;
 
-public interface Service {
+public interface ServiceInterface {
 
 	
 	taskDto addTask(Task task);

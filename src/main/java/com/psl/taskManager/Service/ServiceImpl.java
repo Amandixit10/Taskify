@@ -1,5 +1,6 @@
 package com.psl.taskManager.Service;
 
+import java.lang.annotation.Annotation;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -9,13 +10,17 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
+import org.springframework.stereotype.Service;
 
 import com.psl.taskManager.Dao.TaskRepository;
 import com.psl.taskManager.Model.Task;
 import com.psl.taskManager.dto.taskDto;
 
-@org.springframework.stereotype.Service 
-public class ServiceImpl implements Service{
+import jakarta.transaction.Transactional;
+
+@Service
+@Transactional
+public class ServiceImpl implements ServiceInterface{
 
 	@Autowired
 	private TaskRepository taskRepo;
@@ -106,5 +111,6 @@ public void statusUpdate(List<Task> task) {
 		taskRepo.updateTaskStatus(i.getTaskId(),"Overdue");
 	}
 }
+
 
 }
