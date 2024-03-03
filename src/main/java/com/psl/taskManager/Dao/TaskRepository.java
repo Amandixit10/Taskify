@@ -11,6 +11,8 @@ import org.springframework.stereotype.Repository;
 
 import com.psl.taskManager.Model.Task;
 
+import jakarta.transaction.Transactional;
+
 @Repository
 public interface TaskRepository extends JpaRepository<Task,Long> {
 
@@ -22,7 +24,10 @@ public interface TaskRepository extends JpaRepository<Task,Long> {
 	
 	
 	@Modifying
+	@Transactional
 	@Query(value="update Tasks t set t.status=:status where t.task_id=:id ")
 	public int updateTaskStatus(@Param("id") Long id, @Param("status") String status);
 
 }
+
+// https://meet.google.com/rzb-regw-dvb

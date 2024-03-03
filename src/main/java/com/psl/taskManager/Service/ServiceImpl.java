@@ -1,6 +1,5 @@
 package com.psl.taskManager.Service;
 
-import java.lang.annotation.Annotation;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -16,10 +15,7 @@ import com.psl.taskManager.Dao.TaskRepository;
 import com.psl.taskManager.Model.Task;
 import com.psl.taskManager.dto.taskDto;
 
-import jakarta.transaction.Transactional;
-
 @Service
-@Transactional
 public class ServiceImpl implements ServiceInterface{
 
 	@Autowired
