@@ -80,7 +80,7 @@ public List<taskDto> Converter(List<Task> taskList)
 	for(Task i:taskList)
 	{
 		taskDto dto=new taskDto();
-		dto.setStatus("in progress");
+		dto.setStatus(i.getStatus());
 		dto.setTaskDetails(i.getTaskDetails());
 		dto.setTaskId(i.getTaskId());
 		dto.setTitle(i.getTitle());
