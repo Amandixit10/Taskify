@@ -44,7 +44,7 @@ public class Controller {
 	{
 	return taskService.deleteTask(task.getTaskId());	
 	}
-	
+
 	@GetMapping("/getTask/{status}")
 	public List<taskDto> getTaskByStatus(@PathVariable String status)
 	{
@@ -61,7 +61,7 @@ public class Controller {
 	return taskService.sortTaskByDate(status,order);
 	}
 	@GetMapping("/getTask/overdue")
-	public List<Task> overTaskList()
+	public List<taskDto> overTaskList()
 	{
 		return taskService.overdueTask();
 	}
