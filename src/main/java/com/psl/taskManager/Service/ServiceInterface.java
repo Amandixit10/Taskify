@@ -13,6 +13,6 @@ public interface ServiceInterface {
 	List<taskDto> deleteTask(long id);
 	List<taskDto> filter(String status);
 	List<taskDto> sortTaskByDate(String status, String order);
-	List<Task> overdueTask();
+	List<taskDto> overdueTask();
 	void statusUpdate(List<Task> task);
 }

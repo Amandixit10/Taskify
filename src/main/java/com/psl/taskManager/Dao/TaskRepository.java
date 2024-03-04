@@ -16,16 +16,20 @@ import jakarta.transaction.Transactional;
 @Repository
 public interface TaskRepository extends JpaRepository<Task,Long> {
 
-	@Query(value = "select * from Tasks t where t.status =:status", nativeQuery = true)
+	@Query(value = "select * from tasks t where t.status =:status", nativeQuery = true)
 	List<Task> getTaskByStatus(String status);
 	
-	@Query(value = "select * from Tasks t where t.due_date<:date", nativeQuery = true)
+	@Query(value = "select * from tasks t where t.due_date<:date", nativeQuery = true)
 	List<Task> getOverdueTaskList(Date date);
 	
 	
 	@Modifying
 	@Transactional
+<<<<<<< HEAD
 	@Query(value="update Tasks t set t.status=:status where t.task_id=:id ",nativeQuery=true)
+=======
+	@Query(value="update Tasks t set t.status=:status where t.task_Id=:id ",nativeQuery=true)
+>>>>>>> ba688e7c520cddc0840607a40775d22586b59f9b
 	public int updateTaskStatus(@Param("id") Long id, @Param("status") String status);
 
 }
