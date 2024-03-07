@@ -9,6 +9,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
+import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
@@ -21,7 +22,8 @@ public class ServiceImpl implements ServiceInterface{
 
 	@Autowired
 	private TaskRepository taskRepo;
-	
+	@Autowired
+	private SimpMessagingTemplate temp;
 	@Override
 	public taskDto addTask(Task task) {
 		task.setStartDate(Calendar.getInstance().getTime());
@@ -98,6 +100,7 @@ public List<taskDto> overdueTask() {
 	System.out.println("cron job executed at "+new Date());
     List<Task> list=taskRepo.getOverdueTaskList(new Date());
     statusUpdate(list);
+   temp.convertAndSend("/topic/greetings", list);
     return Converter(list);
 }
 
@@ -106,7 +109,7 @@ public void statusUpdate(List<Task> task) {
 	
 	for(Task i:task)
 	{
-		taskRepo.updateTaskStatus(i.getTaskId(),"Overdue");
+		System.out.println(taskRepo.updateTaskStatus(i.getTaskId(),"Overdue"));
 	}
 }
 
